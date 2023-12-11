@@ -37,7 +37,8 @@ The Sentiment Analyzer API is a powerful tool designed to analyze the sentiment 
 
 Some prerequisties before using the API: 
 
-- Java 17 installed on the local machine 
+- Java 17 installed on the local machine
+  (If you don't have Java 17 installed, you can use ```brew install openjdk@17```) 
 - IntelliJ IDE or any other Java IDE
 - Postman for testing API endpoints
 
@@ -52,7 +53,14 @@ Make sure Key and Endpoint are set to the enviroment variables with variable nam
 git clone git@github.com:sonubasnet/finalProject.git
 
 # Navigate to the project directory
-cd your-repo
+cd finalProject
+
+# Verify Java Version is 17 or later
+java -version
+
+# export Language key and endpoint
+export LANGUAGE_KEY=<Your lanaguage key>
+export LANGUAGE_ENDPOINT=<Your language endpoint>
 
 # Build the project
 ./gradlew build
@@ -60,6 +68,9 @@ cd your-repo
 # Run the project
 ./gradlew run
 ```
+
+## API ENDPOINTS
+```POST /```: Gets the sentimental analysis
 
 ## Usage
 
@@ -103,7 +114,7 @@ Image of what the postman request should look like
 
 ## Built With
 
-- Java 17
+- Java 17 with Spring boot
 - IntelliJ IDEA
 - Digital Ocean
 - Azure Sentiment Analysis API
