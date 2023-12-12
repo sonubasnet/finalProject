@@ -37,8 +37,9 @@ The Sentiment Analyzer API is a powerful tool designed to analyze the sentiment 
 
 Some prerequisties before using the API: 
 
-- Java 17 installed on the local machine
-  (If you don't have Java 17 installed, you can use ```brew install openjdk@17```) 
+- JDK 17 installed on the local machine
+  (If you don't have Java 17 installed, you can use ```brew install openjdk@17```)
+     - Switch to JDK 17 using ```export JAVA_HOME=`/usr/libexec/java_home -v 17` ```
 - IntelliJ IDE or any other Java IDE
 - Postman for testing API endpoints
 
@@ -50,23 +51,30 @@ Make sure Key and Endpoint are set to the enviroment variables with variable nam
 
 ```bash
 # Clone the repository
-git clone git@github.com:sonubasnet/finalProject.git
+> git clone git@github.com:sonubasnet/finalProject.git
 
 # Navigate to the project directory
-cd finalProject
+> cd finalProject
 
 # Verify Java Version is 17 or later
-java -version
+> java -version
+
+#Output of above should be similar to below:
+> java -version
+openjdk version "17.0.7" 2023-04-18 LTS
+OpenJDK Runtime Environment Corretto-17.0.7.7.1 (build 17.0.7+7-LTS)
+OpenJDK 64-Bit Server VM Corretto-17.0.7.7.1 (build 17.0.7+7-LTS, mixed mode, sharing)
+
 
 # export Language key and endpoint
-export LANGUAGE_KEY=<Your lanaguage key>
-export LANGUAGE_ENDPOINT=<Your language endpoint>
+> export LANGUAGE_KEY=<Your lanaguage key>
+> export LANGUAGE_ENDPOINT=<Your language endpoint>
 
 # Build the project
-./gradlew build
+> ./gradlew build
 
-# Run the project
-./gradlew run
+# Run the project (This starts the web server on port 8080)
+> ./gradlew run
 ```
 
 ## API ENDPOINTS
@@ -78,25 +86,26 @@ Explain how users can interact with your project. Provide examples of API reques
 
 ### Example API Request
 
-```http
-POST http://localhost:8080/
-Content-Type: application/json
-
-{
-  "statement": "This is a positive statement."
-}
+```
+curl --location 'localhost:8080/' \
+--header 'Content-Type: text/plain' \
+--data 'Today is a bright and sunny day. The weather is Delightful!'
 ```
 
 ### Example API Response
 
 
-```json
-{
-  "Sentence sentiment": "positive",
-  "positive score": 0.960000,
-  "neutral score": 0.030000,
-  "negative score": 0.010000
-}
+```text:
+Below is the sentiment analysis of your statement(s):
+Recognized document sentiment: positive, positive score: 0.990000, neutral score: 0.010000, negative score: 0.000000.
+
+	Sentence sentiment: neutral, positive score: 0.320000, neutral score: 0.650000, negative score: 0.030000.
+
+	Sentence sentiment: positive, positive score: 0.990000, neutral score: 0.010000, negative score: 0.000000.
+
+		Target sentiment: positive, target text: weather
+
+			'positive' assessment sentiment because of "Delightful". Is the assessment negated: false.
 ```
 <img width="1038" alt="Screen Shot 2023-12-10 at 11 16 58 PM" src="https://github.com/sonubasnet/finalProject/assets/54035984/845d8cfd-259b-454b-a700-ad737dcd18e4">
 
