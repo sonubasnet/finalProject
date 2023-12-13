@@ -87,7 +87,7 @@ Explain how users can interact with your project. Provide examples of API reques
 ### Example API Request
 
 ```
-curl --location 'localhost:8080/' \
+curl --location '64.225.30.152:8080/' \
 --header 'Content-Type: text/plain' \
 --data 'Today is a bright and sunny day. The weather is Delightful!'
 ```
